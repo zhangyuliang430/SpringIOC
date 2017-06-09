@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd ">
+
+	<!-- BoyConstructor.java -->
+	<bean id="chinaGirlFirend" class="com.zyl.spring.set.ChinaGirlFirend">
+		<property name="language" value="chinese" />
+	</bean>
+
+	<bean id="boyConstructor" class="com.zyl.spring.set.BoyConstructor">
+		<!-- 通过构造方法注入对象 -->
+		<constructor-arg ref="chinaGirlFirend" />
+	</bean>
+
+	<!-- BoySetter.java -->
+	<bean id="japanGirlFirend" class="com.zyl.spring.set.JapanGirlFirend">
+		<property name="language" value="japanese" />
+	</bean>
+	<bean id="boySetter" class="com.zyl.spring.set.BoySetter">
+		<!-- 通过setter方法注入对象 -->
+		<property name="girlFirend" ref="japanGirlFirend" />
+	</bean>
+	<!-- BoyPNameSpace.java -->
+	<bean id="usaGirlFriend" class="com.zyl.spring.set.UsaGirlFirend"
+		p:language="english">
+	</bean>
+	<!-- 使用P命名空间注入属性值 -->
+	<bean id="boyPNameSpace" class="com.zyl.spring.set.BoyPNameSpace"
+		p:girlFirend-ref="usaGirlFriend">
+	</bean>
+
+
+</beans>
